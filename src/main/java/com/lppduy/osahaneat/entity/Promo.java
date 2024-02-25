@@ -6,7 +6,7 @@ import lombok.Setter;
 
 import java.util.Date;
 
-@Entity(name = "Promo")
+@Entity
 @Getter
 @Setter
 public class Promo {

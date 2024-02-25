@@ -1,5 +1,6 @@
 package com.lppduy.osahaneat.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -8,18 +9,18 @@ import java.util.Set;
 
 @Getter
 @Setter
-@Entity(name = "Users")
+@Entity
 public class Users {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "username")
+    @Column(name = "user_name")
     private String username;
 
-    @Column(name = "passwod")
-    private String passwod;
+    @Column(name = "password")
+    private String password;
 
     @Column(name = "fullname")
     private String fullname;
