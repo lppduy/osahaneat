@@ -9,7 +9,7 @@ import java.util.Set;
 
 @Getter
 @Setter
-@Entity(name = "Orders")
+@Entity
 public class Orders {
 
 

@@ -8,7 +8,7 @@ import java.util.Set;
 
 @Getter
 @Setter
-@Entity(name = "Food")
+@Entity
 public class Food {
 
     @Id
