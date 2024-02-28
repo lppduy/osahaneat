@@ -2,7 +2,7 @@ package com.lppduy.osahaneat.controller;
 
 import com.lppduy.osahaneat.payload.ResponseData;
 import com.lppduy.osahaneat.service.FileService;
-import com.lppduy.osahaneat.service.RestaurantService;
+import com.lppduy.osahaneat.service.MenuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
@@ -13,44 +13,31 @@ import org.springframework.web.multipart.MultipartFile;
 
 @CrossOrigin("*")
 @RestController
-@RequestMapping("/restaurants")
-public class RestaurantController {
+@RequestMapping("/menus")
+public class MenuController {
+
+    @Autowired
+    MenuService menuService;
 
     @Autowired
     FileService fileService;
-
-    @Autowired
-    RestaurantService restaurantService;
 
     @PostMapping
     public ResponseEntity<?> createRestaurant(
             @RequestParam MultipartFile file,
             @RequestParam String title,
-            @RequestParam String subtitle,
-            @RequestParam String description,
             @RequestParam(value = "is_freeship") boolean isFreeship,
-            @RequestParam String address,
-            @RequestParam(value = "open_date") String openDate
+            @RequestParam(value = "time_ship") String timeShip,
+            @RequestParam double price,
+            @RequestParam(value = "cate_id") int cateId
     ) {
 
         ResponseData responseData = new ResponseData();
 
-        boolean isSuccess = restaurantService.insertRestaurant(
-                file, title, subtitle, description, isFreeship, address, openDate);
+        boolean isSuccess = menuService.createMenu(
+                file, title, isFreeship, timeShip, price, cateId);
 
         responseData.setData(isSuccess);
-
-        return new ResponseEntity<>(responseData, HttpStatus.OK);
-    }
-
-    @GetMapping
-    public ResponseEntity<?> getHomeRestaurant() {
-
-        ResponseData responseData = new ResponseData();
-
-
-
-        responseData.setData(restaurantService.getHomeRestaurant());
 
         return new ResponseEntity<>(responseData, HttpStatus.OK);
     }
