@@ -17,4 +17,5 @@ public interface RestaurantService {
             String open_date
     );
     List<RestaurantDTO> getHomeRestaurant();
+    RestaurantDTO getDetailRestaurant(int id);
 }

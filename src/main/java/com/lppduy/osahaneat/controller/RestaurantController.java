@@ -64,4 +64,14 @@ public class RestaurantController {
                         "attachment; filename=\"" + resource.getFilename() + "\"")
                 .body(resource);
     }
+
+    @GetMapping("/details")
+    public ResponseEntity<?> getDetailRestaurant(@RequestParam int id) {
+
+        ResponseData responseData = new ResponseData();
+
+        responseData.setData(restaurantService.getDetailRestaurant(id));
+
+        return new ResponseEntity<>(responseData, HttpStatus.OK);
+    }
 }
