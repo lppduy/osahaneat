@@ -24,7 +24,11 @@ public class Food {
     @Column(name = "time_ship")
     private String timeShip;
 
+    @Column(name = "is_freeship")
     private boolean isFreeship;
+
+    @Column(name = "description")
+    private String desc;
 
     @Column(name = "price")
     private double price;

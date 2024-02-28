@@ -13,7 +13,7 @@ import java.util.Date;
 public class OrderItem {
 
     @EmbeddedId
-    KeyOrderItem keys;
+    KeyOrderItem keyOrderItem;
 
     @ManyToOne
     @JoinColumn(name = "order_id",insertable = false,updatable = false)
