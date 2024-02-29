@@ -4,6 +4,8 @@ import com.lppduy.osahaneat.payload.ResponseData;
 import com.lppduy.osahaneat.payload.request.SignUpRequest;
 import com.lppduy.osahaneat.service.LoginService;
 import com.lppduy.osahaneat.utils.JwtUtilsHelper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,14 +22,18 @@ public class LoginController {
     @Autowired
     JwtUtilsHelper jwtUtilsHelper;
 
+    Logger logger = LoggerFactory.getLogger(this.getClass());
+
     @PostMapping("/signin")
     public ResponseEntity<?> signin(@RequestParam String username, @RequestParam String password) {
 
         ResponseData responseData = new ResponseData();
 
-//        SecretKey key = Jwts.SIG.HS256.key().build();
-//        String encrypted = Encoders.BASE64.encode(key.getEncoded());
-//        System.out.println(">>>>>>>>> encrypted: " + encrypted);
+        logger.trace("KIEM TRA TRACE LOG");
+        logger.debug("KIEM TRA DEBUG LOG");
+        logger.info("KIEM TRA INFO LOG");
+        logger.warn("KIEM TRA WARN LOG");
+        logger.error("KIEM TRA ERROR LOG");
 
         if (loginService.checkLogin(username, password)) {
             String token = jwtUtilsHelper.generateToken(username);
