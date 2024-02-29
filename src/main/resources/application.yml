@@ -18,3 +18,9 @@ jwt:
 
 fileUpload:
   rootPath: "/Users/phuongduy/Projects/upload"
+
+logging:
+  level:
+    root: info
+  file:
+    name: /Users/phuongduy/Projects/log/dev.log
